@@ -13,6 +13,9 @@ The original piece of art is here - http://color.hailpixel.com/
 
 Mine isn't as awesome as this guy's, But I've only just started with Java.
 
+I've also added the full screen feature for Mac OS in it.
+(Sorry, but windows doesn't have it)
+
 This is totally free(just mention me if you also think its awesome).
 
 Many of my friends think this can become a really awesome backgroud for their apps.
