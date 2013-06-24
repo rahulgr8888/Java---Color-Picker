@@ -57,6 +57,9 @@ public class Graphical extends JFrame{
 		//	int wi = getSize().width;
 		//	int he = getSize().height;
 			Color c = Color.getHSBColor(h,s,b);
+			
+		// If we remove mousepanel. and just write setBackground(c); It will work on Mac, not Windows
+		// Don't know why!
 			mousepanel.setBackground(c);
 		//	statusbar.setText(String.format("%f %f %d %d %f %d", h, s, wi, he, changeInB, countWheelRotations));
 		}
