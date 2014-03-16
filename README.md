@@ -3,7 +3,7 @@ Java---Color-Picker
 
 #### Update
 	Panels added, so that the colors can be viewed side by side along with their info.
-	[Screenshot](https://raw.github.com/rahulgr8888/Java---Color-Picker/master/Screens/Screen2.jpg)
+[Screenshot](https://raw.github.com/rahulgr8888/Java---Color-Picker/master/Screens/Screen2.jpg)
 
 ---
 	
