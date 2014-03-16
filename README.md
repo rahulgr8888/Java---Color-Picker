@@ -1,7 +1,11 @@
 Java---Color-Picker
 ===================
 
+#### Update
+	Panels added, so that the colors can be viewed side by side along with their info.
 
+---
+	
 This is the very first app I made in Java, But I think the concept was awesome.
 
 I tried removing as many bugs as I encountered, as well as making sure it works on MacOS & Windows..
@@ -11,7 +15,7 @@ Its not my Idea, But since I've seen it, I wanted to recreate it.
 
 The original piece of art is here - http://color.hailpixel.com/
 
-Mine isn't as awesome as this guy's, But I've only just started with Java.
+It isn't as awesome as this guy's, But I've only just started with Java.
 
 I've also added the full screen feature for Mac OS in it.
 (Sorry, but windows doesn't have it)

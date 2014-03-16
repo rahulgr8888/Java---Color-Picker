@@ -10,14 +10,58 @@ public class Graphical extends JFrame{
 	private JPanel mousepanel;
 //	private JScrollPane scrollpane;
 	
+	
+	private float h, s;
+	private float b=0.5f;
+	String rgbColorString;
+	
+	
+	JPanel jp[];
+	int i=0,y=0;
+	
+	public void Grids() {
+        i++;
+        y=y+10;
+        jp=new JPanel[i+1];
+        jp[i]=new JPanel();
+        GridLayout gl=new GridLayout(1,i);
+       this.setLayout(gl);
+       // JPanel pl=new JPanel();
+       
+    //   jp[0].setBackground(Color.DARK_GRAY);
+        jp[i].setBackground(Color.getHSBColor(h,s,b));
+        
+        
+        JTextArea textArea = new JTextArea(rgbColorString);
+		textArea.setEditable(false);
+		textArea.setForeground(Color.BLACK);
+		textArea.setBackground(Color.getHSBColor(h,s,b));
+		textArea.setLayout(new BorderLayout());
+		jp[i].add(textArea, BorderLayout.CENTER);
+        
+        
+         add(jp[i]);
+         
+         validate();
+         
+         //JPanel pl1=new JPanel();
+          //pl1.setBackground(Color.yellow);
+        //this.add(pl1);
+        
+    }
+	
+	
+	
+	
 	public Graphical(){
 		super("ColorPicker");
 		mousepanel = new JPanel();
 		mousepanel.setLayout(new BorderLayout());
 		
-	//	mousepanel.setPreferredSize(new Dimension(getSize().width, getSize().height*2));
-	//	scrollpane = new JScrollPane(mousepanel);
-	//	scrollpane.setSize(getSize().width, getSize().height*2);
+	/*	mousepanel.setPreferredSize(new Dimension(getSize().width, getSize().height*2));
+	 *	scrollpane = new JScrollPane(mousepanel);
+	 *	scrollpane.setSize(getSize().width, getSize().height*2);
+	 */
 		
 		add(mousepanel, BorderLayout.CENTER);
 		
@@ -42,8 +86,7 @@ public class Graphical extends JFrame{
 	
 	private class Mouseclass implements MouseListener, MouseMotionListener, MouseWheelListener{
 		
-		private float h, s;
-		private float b=0.5f;
+		
 		
 		private static final int UP = 1;
 	    private static final int DOWN = 2;
@@ -52,16 +95,18 @@ public class Graphical extends JFrame{
 	    private int countWheelRotations=0;
 	    
 	    public void defaultColorChange(MouseEvent e, float b) {
-			h=(1/(float)getSize().width)*(float)e.getX();
-			s=(1/(float)getSize().height)*(float)e.getY();
+	    	if(i==0){
+	    		h=(1/(float)getSize().width)*(float)e.getX();
+	    		s=(1/(float)getSize().height)*(float)e.getY();
+	    	}else{
+	    		h=(1/(float)jp[i].getWidth())*(float)e.getX();
+				s=(1/(float)jp[i].getHeight())*(float)e.getY();
+	    	}
 		//	int wi = getSize().width;
 		//	int he = getSize().height;
 			Color c = Color.getHSBColor(h,s,b);
-			
-		// If we remove mousepanel. and just write setBackground(c); It will work on Mac, not Windows
-		// Don't know why!
 			mousepanel.setBackground(c);
-		//	statusbar.setText(String.format("%f %f %d %d %f %d", h, s, wi, he, changeInB, countWheelRotations));
+		//	statusbar.setText(String.format("%f %f %f %d %d %d", h, s, changeInB, countWheelRotations, getVerticalScrollPosition(), getHorizontalScrollPosition() ));
 		}
 		
 		@Override
@@ -95,6 +140,7 @@ public class Graphical extends JFrame{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			
+			
 			int rgb = Color.HSBtoRGB(h, s, b);
 			Color properRGB = new Color(rgb);
 			
@@ -111,9 +157,16 @@ public class Graphical extends JFrame{
 	//		String alphaH = Integer.toHexString(alphaD);
 	//		alphaH=alphaH.toUpperCase();
 			
-			String rgbColorString = String.format("RGB_Hex_Value: #%s%s%s\nRed: %d, %s\nGreen: %d, %s\nBlue: %d, %s", 
+			rgbColorString = String.format("RGB_Hex_Value: #%s%s%s\nRed: %d, %s\nGreen: %d, %s\nBlue: %d, %s", 
 									redH,greenH,blueH, redD,redH, greenD,greenH, blueD,blueH);
 
+			
+			Grids();
+			
+	//		rgbColorString += String.format("\n\n%d %d", jp[i].getWidth(), jp[i].getHeight());
+
+			
+			
 	//		String hsbColorString = String.format("", args)
 			
 			JTextArea textArea = new JTextArea(rgbColorString);

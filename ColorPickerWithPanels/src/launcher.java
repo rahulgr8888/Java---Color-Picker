@@ -3,9 +3,12 @@
 
 import java.awt.Color;
 import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.lang.reflect.Method;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class launcher {
 
@@ -19,7 +22,21 @@ public class launcher {
 		
 		Graphical go = new Graphical();
 		go.setBackground(Color.WHITE);
-		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		go.addWindowListener(
+			new WindowAdapter(){
+				public void windowClosing(WindowEvent e){
+					JOptionPane.showMessageDialog(null, "Thanks for using ColorPicker.\nuserID- @rahulgr8888\nLook me up anywhere","Closing...",JOptionPane.INFORMATION_MESSAGE);
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					System.exit(0);
+				 }
+			}
+		);
 		
 	//	go.setSize(720,480);
 		go.setExtendedState(JFrame.MAXIMIZED_BOTH);
